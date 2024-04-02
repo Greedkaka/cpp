@@ -3,6 +3,8 @@
 
 #include <string>
 
+using namespace std;
+
 enum Type { INT, DOUBLE, STRING, ARRAY };
 
 struct Array {
@@ -18,11 +20,9 @@ struct Entry {
 };
 
 struct Database {
-  Entry* e;
-  int count;
-  Database* next=nullptr;
-  // 해당 부분만 수정하여 사용한다.
-  // 다른 부분은 수정하면 안됨.
+  Entry **entries;
+  int size;
+  int capacity;
 };
 
 // 엔트리를 생성한다.
@@ -42,5 +42,7 @@ void remove(Database &database, std::string &key);
 
 // 데이터베이스를 해제한다.
 void destroy(Database &database);
+
+int keyCheck(Database &database, string &key);
 
 #endif
