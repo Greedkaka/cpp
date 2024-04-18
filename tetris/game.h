@@ -18,25 +18,6 @@ private:
   std::string board[BOARD_WIDTH][BOARD_HEIGHT];
 
 public:
-  Game(){
-    for (int x = 1; x < BOARD_WIDTH-1; x++){
-      board[x][0]="━";
-      board[x][BOARD_HEIGHT-1]="━";
-    }
-    for (int y = 1; y < BOARD_WIDTH-1; y++){
-      board[0][y]="┃";
-      board[BOARD_WIDTH-1][y]="┃";
-    }
-    board[0][0]="┏";
-    board[BOARD_WIDTH-1][0]="┓";
-    board[0][BOARD_HEIGHT-1]="┗";
-    board[BOARD_WIDTH-1][BOARD_HEIGHT-1]="┛";
-  }
-
-  string getBoard(int x, int y){
-    return board[x][y];
-  }
-
   // 게임의 한 프레임을 처리한다.
   void update();
 
