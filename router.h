@@ -8,7 +8,6 @@ struct RoutingEntry {
 public:
   Address destination;
   Link *nextLink;
-  // RoutingEntry(Address a, Link* l):destination(a), nextLink(l){}
 };
 
 class Router : public Node {
