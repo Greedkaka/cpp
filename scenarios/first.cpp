@@ -96,3 +96,43 @@ int main() {
   delete echoServer;
   delete messageClient;
 }
+/*Host #1: sending packet (from: 0, to: 1, 13 bytes)
+Link: forwarding packet from node #1, to node #5
+Router #5: forwarding packet (from: 0, to: 1, 13 bytes)
+Link: forwarding packet from node #5, to node #3
+Router #3: forwarding packet (from: 0, to: 1, 13 bytes)
+Link: forwarding packet from node #3, to node #2
+Router #2: forwarding packet (from: 0, to: 1, 13 bytes)
+Link: forwarding packet from node #2, to node #0
+Host #0: received packet, destination port: 3000
+EchoService: received "Hello, world!" from 0:1000, send reply with same data
+Host #0: sending packet (from: 1, to: 0, 13 bytes)
+Link: forwarding packet from node #0, to node #2
+Router #2: forwarding packet (from: 1, to: 0, 13 bytes)
+Link: forwarding packet from node #2, to node #3
+Router #3: forwarding packet (from: 1, to: 0, 13 bytes)
+Link: forwarding packet from node #3, to node #5
+Router #5: forwarding packet (from: 1, to: 0, 13 bytes)
+Link: forwarding packet from node #5, to node #1
+Host #1: received packet, destination port: 1000
+MessageService: received "Hello, world!" from 1:3000
+Host #1: sending packet (from: 0, to: 1, 11 bytes)
+Link: forwarding packet from node #1, to node #5
+Router #5: forwarding packet (from: 0, to: 1, 11 bytes)
+Link: forwarding packet from node #5, to node #3
+Router #3: forwarding packet (from: 0, to: 1, 11 bytes)
+Link: forwarding packet from node #3, to node #2
+Router #2: forwarding packet (from: 0, to: 1, 11 bytes)
+Link: forwarding packet from node #2, to node #0
+Host #0: received packet, destination port: 3000
+EchoService: received "Bye, world!" from 0:1000, send reply with same data
+Host #0: sending packet (from: 1, to: 0, 11 bytes)
+Link: forwarding packet from node #0, to node #2
+Router #2: forwarding packet (from: 1, to: 0, 11 bytes)
+Link: forwarding packet from node #2, to node #3
+Router #3: forwarding packet (from: 1, to: 0, 11 bytes)
+Link: forwarding packet from node #3, to node #5
+Router #5: forwarding packet (from: 1, to: 0, 11 bytes)
+Link: forwarding packet from node #5, to node #1
+Host #1: received packet, destination port: 1000
+MessageService: received "Bye, world!" from 1:3000*/
