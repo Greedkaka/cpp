@@ -9,6 +9,7 @@ class ManualRouter : public Router {
 public:
   // 목적지 주소에 따른 다음 링크를 설정한다.
   RoutingEntry re;
+  ManualRouter(){}
   
   void addRoutingEntry(const Address &destination, Link *nextLink){
     re.destination=destination;

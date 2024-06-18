@@ -12,6 +12,7 @@ public:
 
 class Router : public Node {
 protected:
+  Router(){}
   std::vector<RoutingEntry> routingTable_;
 };
 
