@@ -8,7 +8,10 @@ class LinkInstaller {
 public:
   // 노드 a, b 사이에 링크를 설치하고 반환한다.
   Link *install(Node *a, Node *b){
-    return new Link(a,b);
+    Link* l=new Link(a,b);
+    a->link_.push_back(*l);
+    b->link_.push_back(*l);
+    return l;
   }
 };
 

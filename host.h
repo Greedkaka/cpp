@@ -21,10 +21,29 @@ public:
   Host(Address address) : address_(address) {}
 
   // 호스트와 설치된 서비스를 전부 초기화한다.
-  void initialize();
+  void initialize(){
+
+  }
 
   // 링크를 랜덤으로 하나 선택하여 패킷을 전송한다.
-  void send(Packet *packet);
+  void send(Packet *packet){
+    cout<<"Host #"<<id()<<": sending packet (from: "<<packet->srcAddress().toString()<<", to: "<<packet->destAddress().toString()<<", "<<packet->dataString()<<" bytes)"<<endl;
+    
+  }
+
+  virtual void onReceive(Packet* packet) {
+    Service *service;
+    for(int i = 0; i < services_.size(); i++) {
+      Service* s = services_[i];
+      if(s->getPort() == packet->destPort()) {
+        service = s;
+        break;
+      }
+    }
+
+    if(service != nullptr) 
+      service->onRecieve(this, packet);
+  }
 };
 
 #endif

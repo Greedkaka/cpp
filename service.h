@@ -16,6 +16,15 @@ protected:
   short port_;
 
   Service(Host *host, int port) : host_(host), port_(port) {}
+public:
+  short getPort(){
+    return port_;
+  }
+
+  void onReceive(Node* node, Packet* packet) {
+    if((node->id()==host_->id()) && (packet->destPort() == this->getPort()))
+
+  }
 };
 
 #endif
