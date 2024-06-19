@@ -2,7 +2,6 @@
 #define HOST_H
 
 #include "address.h"
-#include "packet.h"
 #include "service.h"
 #include "node.h"
 #include <vector>
@@ -33,7 +32,7 @@ public:
   void send(Packet *packet){
     cout<<"Host #"<<id()<<": sending packet (from: "<<packet->srcAddress().toString()<<", to: "<<packet->destAddress().toString()<<", "<<packet->dataString()<<" bytes)"<<endl;
     srand(time(NULL));
-    link_[rand()%link_.size()].onReceive(this, packet);
+    link_[rand()%link_.size()]->onReceive(this, packet);
   }
 
   virtual void onReceive(Packet* packet) {

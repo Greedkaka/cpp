@@ -13,8 +13,8 @@ public:
   Link *install(Node *a, Node *b){
     Link* l=new Link(a,b);
     lin.push_back(l);
-    a->link_.push_back(*l);
-    b->link_.push_back(*l);
+    a->link_.push_back(l);
+    b->link_.push_back(l);
     return l;
   }
   ~LinkInstaller(){

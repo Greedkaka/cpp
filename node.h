@@ -17,14 +17,15 @@ private:
   static int nextId_;
 
 protected:
-  std::vector<Link> link_;
+  std::vector<Link*> link_;
 
 public:
   Node() : id_(nextId_++) {}
   int id() const { return id_; }
+  virtual ~Node() {}
 
   virtual void onReceive(Packet *packet)=0;
 };
 
-int Node::nextId_=0;
+// int Node::nextId_=0;
 #endif

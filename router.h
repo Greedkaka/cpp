@@ -2,8 +2,6 @@
 #define ROUTER_H
 
 #include "node.h"
-#include "link.h"
-#include <iostream>
 
 struct RoutingEntry {
 public:
@@ -17,6 +15,8 @@ class Router : public Node {
 protected:
   std::vector<RoutingEntry> routingTable_;
 
+public:
+  virtual ~Router() {}
   virtual void onReceive(Packet* packet) {
     for(int i =0, k=routingTable_.size(); i< k; i++) {
       RoutingEntry entry = routingTable_[i];

@@ -1,5 +1,6 @@
-#include <link.h>
-#include <node.h>
+#include "link.h"
+#include "node.h"
+#include <iostream>
 
 void Link::onReceive(Node* sender, Packet* packet) {
     Node* receiver = other(sender);
