@@ -2,9 +2,10 @@
 #define NODE_H
 
 #include <iostream>
+#include <time.h>
+#include <vector>
 #include "link.h"
 #include "packet.h"
-#include <vector>
 
 using namespace std;
 
@@ -25,4 +26,5 @@ public:
   virtual void onReceive(Packet *packet)=0;
 };
 
+int Node::nextId_=0;
 #endif

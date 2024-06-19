@@ -1,7 +1,10 @@
 #ifndef SERVICE_H
 #define SERVICE_H
 
-#include "node.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
 
 class Host;
 
@@ -21,10 +24,7 @@ public:
     return port_;
   }
 
-  void onReceive(Node* node, Packet* packet) {
-    if((node->id()==host_->id()) && (packet->destPort() == this->getPort()))
-
-  }
+  virtual void onReceive(Host* host, Packet* packet)=0;
 };
 
 #endif

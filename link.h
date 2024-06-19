@@ -3,6 +3,9 @@
 
 #include "packet.h"
 #include <cstdlib>
+#include <iostream>
+
+using namespace std;
 
 class Node;
 
@@ -20,10 +23,7 @@ private:
     return node == nodeA_ ? nodeB_ : nodeA_;
   }
 public:
-  void onReceive(Node* sender, Packet* packet) {
-    Node* receiver = other(sender);
-    receiver->onReceive(packet);
-  }
+  void onReceive(Node* sender, Packet* packet);
 };
 
 #endif

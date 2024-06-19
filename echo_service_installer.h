@@ -15,7 +15,9 @@ public:
 
   // 호스트에 EchoService를 설치한다.
   EchoService *install(Host *host){
-    ServiceInstaller::install(host, new EchoService(host, listenPort_));
+    EchoService* e_s=new EchoService(host, listenPort_);
+    ServiceInstaller::install(host, e_s);
+    return e_s;
   }
 };
 

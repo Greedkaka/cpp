@@ -18,7 +18,9 @@ public:
 
   // 호스트에 MessageService를 설치한다
   MessageService *install(Host *host){
-    ServiceInstaller::install(host, new MessageService(host, 1000, destAddress_, destPort_));
+    MessageService* m_s=new MessageService(host, 1000, destAddress_, destPort_);
+    ServiceInstaller::install(host, m_s);
+    return m_s;
   }
 };
 

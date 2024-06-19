@@ -1,10 +1,7 @@
 #ifndef MESSAGE_SERVICE_H
 #define MESSAGE_SERVICE_H
 
-#include "address.h"
 #include "host.h"
-#include "service.h"
-#include <iostream>
 
 // send 함수를 호출하여 메시지를 전송할 수 있는 서비스
 class MessageService : public Service {
@@ -22,6 +19,13 @@ public:
   // 메시지를 전송한다
   void send(std::string message) {
     host_->send(new Packet(host_->address(), destAddress_, port_, destPort_, message));
+  }
+
+  virtual void onReceive(Host* host, Packet* packet) {
+    if((host->id()==host_->id()) && (packet->destPort() == this->getPort())){
+      cout<<"MessageService: received \""<<packet->dataString()<<"\" from "<<packet->srcAddress().getAd()<<":"<<packet->srcPort()<<endl;
+      delete(packet);
+    }
   }
 };
 

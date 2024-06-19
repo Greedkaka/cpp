@@ -4,6 +4,7 @@
 #include "address.h"
 #include "packet.h"
 #include "service.h"
+#include "node.h"
 #include <vector>
 
 class Host : public Node {
@@ -19,6 +20,9 @@ private:
 public:
   Address address() { return address_; }
   Host(Address address) : address_(address) {}
+  ~Host(){
+    std::vector<Service*>().swap(services_);
+  }
 
   // 호스트와 설치된 서비스를 전부 초기화한다.
   void initialize(){
@@ -28,12 +32,13 @@ public:
   // 링크를 랜덤으로 하나 선택하여 패킷을 전송한다.
   void send(Packet *packet){
     cout<<"Host #"<<id()<<": sending packet (from: "<<packet->srcAddress().toString()<<", to: "<<packet->destAddress().toString()<<", "<<packet->dataString()<<" bytes)"<<endl;
-    
+    srand(time(NULL));
+    link_[rand()%link_.size()].onReceive(this, packet);
   }
 
   virtual void onReceive(Packet* packet) {
     Service *service;
-    for(int i = 0; i < services_.size(); i++) {
+    for(int i = 0, k=services_.size(); i < k; i++) {
       Service* s = services_[i];
       if(s->getPort() == packet->destPort()) {
         service = s;
@@ -42,7 +47,7 @@ public:
     }
 
     if(service != nullptr) 
-      service->onRecieve(this, packet);
+      service->onReceive(this, packet);
   }
 };
 
