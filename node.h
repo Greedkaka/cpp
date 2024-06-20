@@ -14,7 +14,7 @@ class Node {
 
 private:
   int id_;
-  static int nextId_;
+  int nextId_;
 
 protected:
   std::vector<Link*> link_;

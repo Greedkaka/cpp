@@ -1,10 +1,10 @@
 #ifndef SERVICE_H
 #define SERVICE_H
 
-#include <iostream>
-#include <string>
+// #include <iostream>
+// #include <string>
 
-using namespace std;
+// using namespace std;
 
 class Host;
 

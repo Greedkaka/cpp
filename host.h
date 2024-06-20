@@ -30,12 +30,13 @@ public:
 
   // 링크를 랜덤으로 하나 선택하여 패킷을 전송한다.
   void send(Packet *packet){
-    cout<<"Host #"<<id()<<": sending packet (from: "<<packet->srcAddress().toString()<<", to: "<<packet->destAddress().toString()<<", "<<packet->dataString()<<" bytes)"<<endl;
+    cout<<"Host #"<<id()<<": sending packet (from: "<<packet->srcAddress().toString()<<", to: "<<packet->destAddress().toString()<<", "<<packet->datasize()<<" bytes)"<<endl;
     srand(time(NULL));
     link_[rand()%link_.size()]->onReceive(this, packet);
   }
 
   virtual void onReceive(Packet* packet) {
+    cout<<"Host #"<<id()<<": received packet, destination port: "<<packet->destPort()<<endl;
     Service *service;
     for(int i = 0, k=services_.size(); i < k; i++) {
       Service* s = services_[i];
